@@ -20,7 +20,7 @@
 [![爱发电][afdian_img]][afdian_link]
 [![buy me a coffee][bmac_img]][bmac_link]
 
-<!-- ASFChatDumper 介绍 & 使用指南: [https://keylol.com/t804841-1-1](https://keylol.com/t804841-1-1) -->
+【ASF】Steam聊天记录导出工具: [https://keylol.com/t989418-1-1](https://keylol.com/t989418-1-1)
 
 ## 安装方式
 
