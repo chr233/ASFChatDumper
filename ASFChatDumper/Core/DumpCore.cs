@@ -20,7 +20,7 @@ internal static class DumpCore
         var filePath = Path.Combine(OutputPath, $"{friendName}-{DateTime.Now:yyyy_MM_dd-HH_mm_dd}.csv");
         using var fs = new FileStream(filePath, FileMode.Create);
         using var sw = new StreamWriter(fs, Encoding.UTF8);
-        sw.WriteLine("发送者,发送者 SteamID,接收者,接收者 SteamID,消息内容,发送时间 (UTC),时间戳");
+        sw.WriteLine(Langs.CsvTitle);
         foreach (var data in chatDatas)
         {
             var sanitizedMessage = data.Message?.Replace("\"", "\"\"");

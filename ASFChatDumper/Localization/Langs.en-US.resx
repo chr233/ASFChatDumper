@@ -195,4 +195,19 @@
   <data name="ASFEnhanceRegisterSuccess" xml:space="preserve">
     <value>ASFEBridge registered successfully</value>
   </data>
+  <data name="FetchChatHistoryFailed" xml:space="preserve">
+    <value>Fetch message failed</value>
+  </data>
+  <data name="NoChatHistory" xml:space="preserve">
+    <value>No message</value>
+  </data>
+  <data name="DumpChatCount" xml:space="preserve">
+    <value>Fetchd {0} messages</value>
+  </data>
+  <data name="NoActiveMessageSession" xml:space="preserve">
+    <value>No active message session dected</value>
+  </data>
+  <data name="CsvTitle" xml:space="preserve">
+    <value>Sender,Sender SteamID,Receiver,Receiver SteamID,Message,Time (UTC),Timestamp</value>
+  </data>
 </root>

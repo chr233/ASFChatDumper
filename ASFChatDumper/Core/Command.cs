@@ -30,7 +30,7 @@ internal static class Command
         var session = activeSessions.Response.MessageSessions;
         if (session == null || session.Count == 0)
         {
-            return bot.FormatBotResponse("未检测到活跃会话");
+            return bot.FormatBotResponse(Langs.NoActiveMessageSession);
         }
 
         var sb = new StringBuilder();
@@ -102,9 +102,9 @@ internal static class Command
 
             var msg = count switch
             {
-                -1 => "获取失败",
-                0 => "无消息",
-                _ => $"共获取 {count} 条消息",
+                -1 => Langs.FetchChatHistoryFailed,
+                0 => Langs.NoChatHistory,
+                _ => string.Format(Langs.DumpChatCount, count),
             };
 
             sb.AppendLine(string.Format("{0} {1} {2}", friendId64, friendName, msg));

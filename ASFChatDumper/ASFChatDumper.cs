@@ -192,18 +192,28 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2
             1 => cmd switch
             {
                 //Plugin Info
-                "ASFRIDSTOOL" or
-                    "ART" when access >= EAccess.FamilySharing =>
+                "ASFCHATDUMPER" or
+                "ACD" when access >= EAccess.FamilySharing =>
                     Task.FromResult(PluginInfo),
 
-                "TEST" when access >= EAccess.Master =>
-                    Command.ResponseDumpChat(bot),
+                "DUMPCHAT" or
+                "DC" when access >= EAccess.Master =>
+                    Command.ResponseDumpChat(bot, false),
+
+                "DUMPCHATMIX" or
+                "DCM" when access >= EAccess.Master =>
+                    Command.ResponseDumpChat(bot, true),
 
                 _ => null
             },
             _ => cmd switch
             {
-                "TEST" when access >= EAccess.Master =>
+                "DUMPCHAT" or
+                "DC" when access >= EAccess.Master =>
+                    Command.ResponseDumpChat(Utilities.GetArgsAsText(args, 1, ",")),
+
+                "DUMPCHATMIX" or
+                "DCM" when access >= EAccess.Master =>
                     Command.ResponseDumpChat(Utilities.GetArgsAsText(args, 1, ",")),
 
                 _ => null
