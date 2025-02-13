@@ -33,7 +33,9 @@ internal static class Utils
     /// <summary>
     ///     获取插件所在路径
     /// </summary>
-    internal static string MyLocation => Assembly.GetExecutingAssembly().Location;
+    internal static string MyLocation => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+    internal static string OutputPath => Path.Combine(MyLocation, "chat_dump");
 
     /// <summary>
     ///     Steam商店链接
