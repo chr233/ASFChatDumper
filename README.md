@@ -20,7 +20,7 @@
 [![爱发电][afdian_img]][afdian_link]
 [![buy me a coffee][bmac_img]][bmac_link]
 
-【ASF】Steam聊天记录导出工具: [https://keylol.com/t989418-1-1](https://keylol.com/t989418-1-1)
+【ASF】Steam 聊天记录导出工具: [https://keylol.com/t989418-1-1](https://keylol.com/t989418-1-1)
 
 ## 安装方式
 
@@ -60,15 +60,19 @@
   //ASFChatDumper 配置
   "ASFChatDumper": {
     "EULA": true,
-    "Statistic": true
+    "Statistic": true,
+    "EnableDailyDump": false,
+    "IsDailyDumpMix": false
   }
 }
 ```
 
-| 配置项      | 类型   | 默认值 | 说明                                                               |
-| ----------- | ------ | ------ | ------------------------------------------------------------------ |
-| `EULA`      | `bool` | `true` | 是否同意 `EULA`                                                    |
-| `Statistic` | `bool` | `true` | 是否允许发送统计数据, 仅用于统计插件用户数量, 不会发送任何其他信息 |
+| 配置项            | 类型   | 默认值  | 说明                                                               |
+| ----------------- | ------ | ------- | ------------------------------------------------------------------ |
+| `EULA`            | `bool` | `false` | 是否同意 `EULA`                                                    |
+| `Statistic`       | `bool` | `true`  | 是否允许发送统计数据, 仅用于统计插件用户数量, 不会发送任何其他信息 |
+| `EnableDailyDump` | `bool` | `false` | 是否启用每日自动导出聊天记录                                       |
+| `IsDailyDumpMix`  | `bool` | `false` | 触发每日自动导出时是否将聊天记录混合保存                           |
 
 ## 插件指令说明
 
