@@ -230,7 +230,7 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2, IBotMessage
 
     public async Task<string?> OnBotMessage(Bot bot, ulong steamID, string message)
     {
-        if (!Config.EnableDailyDump || DateTime.Now.Day == Day)
+        if (!Config.EULA || !Config.EnableDailyDump || DateTime.Now.Day == Day)
         {
             return null;
         }
