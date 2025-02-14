@@ -12,7 +12,7 @@ using System.Text.Json;
 namespace ASFChatDumper;
 
 [Export(typeof(IPlugin))]
-internal sealed class ASFChatDumper : IASF, IBotCommand2, IBotMessage
+internal sealed class ASFChatDumper : IASF, IBotCommand2, IBotMessage, IGitHubPluginUpdates
 {
     private bool ASFEBridge;
 
@@ -29,6 +29,10 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2, IBotMessage
 
     public string Name => "ASF Chat Dumper";
     public Version Version => MyVersion;
+
+    public bool CanUpdate => true;
+
+    public string RepositoryName => "chr233/ASFChatDumper";
 
     /// <summary>
     ///     ASF启动事件
