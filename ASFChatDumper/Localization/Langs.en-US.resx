@@ -210,4 +210,10 @@
   <data name="CsvTitle" xml:space="preserve">
     <value>Sender,Sender SteamID,Receiver,Receiver SteamID,Message,Time (UTC),Timestamp</value>
   </data>
+  <data name="EnableDailyDumpTips" xml:space="preserve">
+    <value>Enabled auto dump chat history</value>
+  </data>
+  <data name="ChatHistoryDumped" xml:space="preserve">
+    <value>Chat history dumped</value>
+  </data>
 </root>

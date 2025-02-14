@@ -16,4 +16,13 @@ public sealed record PluginConfig
     ///     是否启用统计
     /// </summary>
     public bool Statistic { get; set; } = true;
+
+    /// <summary>
+    /// 每日自动导出
+    /// </summary>
+    public bool EnableDailyDump { get; set; }
+    /// <summary>
+    /// 每日自动导出混合格式
+    /// </summary>
+    public bool IsDailyDumpMix { get; set; }
 }

@@ -12,13 +12,15 @@ using System.Text.Json;
 namespace ASFChatDumper;
 
 [Export(typeof(IPlugin))]
-internal sealed class ASFChatDumper : IASF, IBotCommand2
+internal sealed class ASFChatDumper : IASF, IBotCommand2, IBotMessage
 {
     private bool ASFEBridge;
 
     public static PluginConfig Config => Utils.Config;
 
-    private static Timer? StatisticTimer { get; set; }
+    private static Timer? StatisticTimer;
+
+    private int Day;
 
     /// <summary>
     ///     获取插件信息
@@ -70,6 +72,11 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2
             warnings.AppendLine(Langs.Line);
             warnings.AppendLineFormat(Langs.EulaWarning, Name);
             warnings.AppendLine(Langs.Line);
+        }
+
+        if (Config.EnableDailyDump)
+        {
+            ASFLogger.LogGenericWarning(Langs.EnableDailyDumpTips);
         }
 
         if (warnings.Length > 0)
@@ -197,11 +204,11 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2
                     Task.FromResult(PluginInfo),
 
                 "DUMPCHAT" or
-                "DC" when access >= EAccess.Master =>
+                "DC" when Config.EULA && access >= EAccess.Master =>
                     Command.ResponseDumpChat(bot, false),
 
                 "DUMPCHATMIX" or
-                "DCM" when access >= EAccess.Master =>
+                "DCM" when Config.EULA && access >= EAccess.Master =>
                     Command.ResponseDumpChat(bot, true),
 
                 _ => null
@@ -209,15 +216,28 @@ internal sealed class ASFChatDumper : IASF, IBotCommand2
             _ => cmd switch
             {
                 "DUMPCHAT" or
-                "DC" when access >= EAccess.Master =>
+                "DC" when Config.EULA && access >= EAccess.Master =>
                     Command.ResponseDumpChat(Utilities.GetArgsAsText(args, 1, ",")),
 
                 "DUMPCHATMIX" or
-                "DCM" when access >= EAccess.Master =>
+                "DCM" when Config.EULA && access >= EAccess.Master =>
                     Command.ResponseDumpChat(Utilities.GetArgsAsText(args, 1, ",")),
 
                 _ => null
             }
         };
+    }
+
+    public async Task<string?> OnBotMessage(Bot bot, ulong steamID, string message)
+    {
+        if (!Config.EnableDailyDump || DateTime.Now.Day == Day)
+        {
+            return null;
+        }
+
+        Day = DateTime.Now.Day;
+        await Command.ResponseDumpChat(bot, Config.IsDailyDumpMix).ConfigureAwait(false);
+        ASFLogger.LogGenericWarning(Langs.ChatHistoryDumped);
+        return null;
     }
 }
