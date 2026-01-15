@@ -13,9 +13,6 @@ env:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-
     runs-on: windows-latest
 
     steps:
@@ -103,8 +100,6 @@ jobs:
           name: ${{ env.PROJECT_NAME }} ${{ github.ref_name }}
           body: |
             ![Release](https://img.shields.io/badge/${{ env.REPO_NAME }}-${{ github.ref_name }}-brightgreen) ![Downloads](https://img.shields.io/github/downloads/chr233/${{ env.REPO_NAME }}/${{ github.ref_name }}/total?label=Downloads)
-
-            Help improve translation: [![Crowdin](https://badges.crowdin.net/asfenhance/localized.svg)](https://crowdin.com/project/asfenhance)
 
             ---
 
